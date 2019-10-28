@@ -11,7 +11,7 @@ export default class Calculator extends React.Component {
   }
   parseValue(str='') {
     let customDelimiter = ''
-    if(str.indexOf('//[')===0) {debugger
+    if(str.indexOf('//[')===0) {
       let reg = /\[.+\]/
       let results = reg.exec(str)
       customDelimiter = results[0]
