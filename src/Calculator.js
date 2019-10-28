@@ -10,14 +10,13 @@ export default class Calculator extends React.Component {
     this.handleClick = this.handleClick.bind(this)
   }
   parseValue(str='') {
-    let args = str.split(',')
-    let arg1 = Number(args[0]) || 0
-    let arg2 = Number(args[1]) || 0
-    if(args.length > 2) {
-      throw new Error('Cannot add more than 2 numbers')
-    } else {
-      return arg1 + arg2
-    }
+    return str.split(',').reduce((accumulator, currentValue)=>{
+      let a = Number(accumulator)
+      let c = Number(currentValue)
+      if(isNaN(a)) a = 0
+      if(isNaN(c)) c = 0
+      return a + c
+    }, 0)
   }
   handleChange(e) {
     this.setState({

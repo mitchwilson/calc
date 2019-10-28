@@ -63,3 +63,19 @@ it('add returns 5 for input 5,tyty', () => {
     ReactDOM.unmountComponentAtNode(div)
   })
 })
+
+it('add returns 5 for input 5,tyty,5', () => {
+  const div = document.createElement('div')
+  ReactDOM.render(<Calculator data="5,tyty,5"/>, div, ()=>{
+    expect(div.querySelector("input").value).toBe("10")
+    ReactDOM.unmountComponentAtNode(div)
+  })
+})
+
+it('add returns 78 for input 1,2,3,4,5,6,7,8,9,10,11,12', () => {
+  const div = document.createElement('div')
+  ReactDOM.render(<Calculator data="1,2,3,4,5,6,7,8,9,10,11,12"/>, div, ()=>{
+    expect(div.querySelector("input").value).toBe("78")
+    ReactDOM.unmountComponentAtNode(div)
+  })
+})
