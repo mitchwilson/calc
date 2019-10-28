@@ -10,7 +10,12 @@ export default class Calculator extends React.Component {
     this.handleClick = this.handleClick.bind(this)
   }
   parseValue(str='') {
-    let arr = str.split(/,|\\n/)
+    let customDelimiter = ''
+    if(str.indexOf('//')===0) {
+      customDelimiter = '|'+str[2]
+      str = str.slice(3)
+    }
+    let arr = str.split(new RegExp(',|\\\\n'+customDelimiter))
     let negatives = arr.filter((str)=>{
       return Number(str) < 0
     })

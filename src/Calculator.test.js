@@ -87,3 +87,11 @@ it('add returns 8 for input 2,1001,6', () => {
     ReactDOM.unmountComponentAtNode(div)
   })
 })
+
+it('support custom delimiter, //#\n2#5 will return 7; //,\n2,ff,100 will return 102', () => {
+  const div = document.createElement('div')
+  ReactDOM.render(<Calculator data="//#\n2#5"/>, div, ()=>{
+    expect(div.querySelector("input").value).toBe("7")
+    ReactDOM.unmountComponentAtNode(div)
+  })
+})
