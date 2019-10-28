@@ -79,3 +79,11 @@ it('add returns 78 for input 1,2,3,4,5,6,7,8,9,10,11,12', () => {
     ReactDOM.unmountComponentAtNode(div)
   })
 })
+
+it('support newline character as alternative delimiter', () => {
+  const div = document.createElement('div')
+  ReactDOM.render(<Calculator data="1\n2,3"/>, div, ()=>{
+    expect(div.querySelector("input").value).toBe("6")
+    ReactDOM.unmountComponentAtNode(div)
+  })
+})

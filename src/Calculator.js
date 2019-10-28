@@ -10,7 +10,7 @@ export default class Calculator extends React.Component {
     this.handleClick = this.handleClick.bind(this)
   }
   parseValue(str='') {
-    return str.split(',').reduce((accumulator, currentValue)=>{
+    return str.split(/,|\\n/).reduce((accumulator, currentValue)=>{
       let a = Number(accumulator)
       let c = Number(currentValue)
       if(isNaN(a)) a = 0
