@@ -95,3 +95,11 @@ it('support custom delimiter, //#\n2#5 will return 7; //,\n2,ff,100 will return 
     ReactDOM.unmountComponentAtNode(div)
   })
 })
+
+it('support multi-character custom delimiter, //[---]\n11---22---33 will return 66', () => {
+  const div = document.createElement('div')
+  ReactDOM.render(<Calculator data="//[---]\n11---22---33"/>, div, ()=>{
+    expect(div.querySelector("input").value).toBe("66")
+    ReactDOM.unmountComponentAtNode(div)
+  })
+})
