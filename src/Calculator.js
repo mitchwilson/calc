@@ -22,6 +22,7 @@ export default class Calculator extends React.Component {
         let c = Number(currentValue)
         if(isNaN(a)) a = 0
         if(isNaN(c)) c = 0
+        if(c > 1000) c = 0
         return a + c
       }, 0)
     }

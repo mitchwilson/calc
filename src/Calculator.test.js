@@ -16,14 +16,6 @@ it('add returns 20 for input 20', () => {
   })
 })
 
-it('add returns 1 for input 1,5000', () => {
-  const div = document.createElement('div')
-  ReactDOM.render(<Calculator data="1,5000"/>, div, ()=>{
-    expect(div.querySelector("input").value).toBe("5001")
-    ReactDOM.unmountComponentAtNode(div)
-  })
-})
-
 it('add returns 1 for input 1,0', () => {
   const div = document.createElement('div')
   ReactDOM.render(<Calculator data="1,0"/>, div, ()=>{
@@ -76,6 +68,22 @@ it('support newline character as alternative delimiter', () => {
   const div = document.createElement('div')
   ReactDOM.render(<Calculator data="1\n2,3"/>, div, ()=>{
     expect(div.querySelector("input").value).toBe("6")
+    ReactDOM.unmountComponentAtNode(div)
+  })
+})
+
+it('add returns 1 for input 1,5000', () => {
+  const div = document.createElement('div')
+  ReactDOM.render(<Calculator data="1,5000"/>, div, ()=>{
+    expect(div.querySelector("input").value).toBe("1")
+    ReactDOM.unmountComponentAtNode(div)
+  })
+})
+
+it('add returns 8 for input 2,1001,6', () => {
+  const div = document.createElement('div')
+  ReactDOM.render(<Calculator data="2,1001,6"/>, div, ()=>{
+    expect(div.querySelector("input").value).toBe("8")
     ReactDOM.unmountComponentAtNode(div)
   })
 })
