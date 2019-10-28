@@ -10,13 +10,21 @@ export default class Calculator extends React.Component {
     this.handleClick = this.handleClick.bind(this)
   }
   parseValue(str='') {
-    return str.split(/,|\\n/).reduce((accumulator, currentValue)=>{
-      let a = Number(accumulator)
-      let c = Number(currentValue)
-      if(isNaN(a)) a = 0
-      if(isNaN(c)) c = 0
-      return a + c
-    }, 0)
+    let arr = str.split(/,|\\n/)
+    let negatives = arr.filter((str)=>{
+      return Number(str) < 0
+    })
+    if(negatives.length) {
+      throw new Error('Cannot accept negative numbers: ' + negatives.join(','))
+    } else {
+      return arr.reduce((accumulator, currentValue)=>{
+        let a = Number(accumulator)
+        let c = Number(currentValue)
+        if(isNaN(a)) a = 0
+        if(isNaN(c)) c = 0
+        return a + c
+      }, 0)
+    }
   }
   handleChange(e) {
     this.setState({

@@ -24,14 +24,6 @@ it('add returns 1 for input 1,5000', () => {
   })
 })
 
-it('add returns 1 for input 4,-3', () => {
-  const div = document.createElement('div')
-  ReactDOM.render(<Calculator data="4,-3"/>, div, ()=>{
-    expect(div.querySelector("input").value).toBe("1")
-    ReactDOM.unmountComponentAtNode(div)
-  })
-})
-
 it('add returns 1 for input 1,0', () => {
   const div = document.createElement('div')
   ReactDOM.render(<Calculator data="1,0"/>, div, ()=>{
